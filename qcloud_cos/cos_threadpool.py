@@ -84,20 +84,18 @@ if __name__ == '__main__':
 
     pool = SimpleThreadPool(2)
 
-
     def task_sleep(x):
         from time import sleep
         sleep(x)
         return 'hello, sleep %d seconds' % x
 
-
     def raise_exception():
         raise ValueError("Pa! Exception!")
-
 
     for i in range(1000):
         pool.add_task(task_sleep, 0.001)
         print(i)
+
     pool.add_task(task_sleep, 0)
     pool.add_task(task_sleep, 0)
     # pool.add_task(raise_exception)
